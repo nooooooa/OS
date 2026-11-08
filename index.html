@@ -4,16 +4,11 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <meta name="theme-color" content="#10233f">
-<<<<<<< HEAD
 <title>OS Study — Operating Systems</title>
-=======
-<title>OS Study — CPU Scheduling</title>
->>>>>>> a3e579681fa4c35a921eaea0913178e6e3b939f7
 <style>
 :root{--navy:#10233f;--navy2:#18385f;--cyan:#4cc9f0;--orange:#f4a261;--bg:#f3f6fb;--card:#fff;--ink:#17243a;--muted:#66758b;--line:#e4eaf2;--green:#16845b;--red:#c74646}
 *{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:var(--bg);color:var(--ink);font-family:system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;line-height:1.55}
 header{background:linear-gradient(135deg,var(--navy),var(--navy2));color:#fff;padding:25px 18px 22px;border-radius:0 0 25px 25px}
-<<<<<<< HEAD
 .wrap{max-width:900px;margin:auto}header .eyebrow{color:#a8dff0;font-size:.76rem;font-weight:800;letter-spacing:.13em;text-transform:uppercase}h1{font-size:1.8rem;line-height:1.15;margin:8px 0}header p{color:#d6e3f1;margin:8px 0 0;font-size:.95rem}
 .tabs{display:flex;gap:7px;padding:12px 10px;position:sticky;top:0;background:rgba(243,246,251,.96);backdrop-filter:blur(10px);z-index:5;border-bottom:1px solid var(--line)}
 .tab{flex:1;min-width:0;border:0;border-radius:12px;padding:11px 5px;background:#e6edf6;color:var(--navy);font-weight:800;font-size:.82rem}
@@ -37,40 +32,11 @@ details{background:#f8fafc;border:1px solid var(--line);border-radius:11px;paddi
 .gantt{display:flex;overflow-x:auto;margin:12px 0 5px;border:1px solid var(--line);border-radius:10px}.seg{min-width:42px;flex:1;text-align:center;padding:9px 3px;font-size:.78rem;font-weight:800;background:#e7f4fb;border-right:1px solid white;color:#143454}.seg:nth-child(2n){background:#fff0e2}
 .times{display:flex;justify-content:space-between;color:var(--muted);font-size:.75rem}
 @media(min-width:700px){main,.tabs{padding-left:22px;padding-right:22px}header{padding:32px 25px}h1{font-size:2.2rem}.card{padding:20px}.tab{font-size:.92rem;padding:12px 8px}}
-=======
-.wrap{max-width:850px;margin:auto}header .eyebrow{color:#a8dff0;font-size:.76rem;font-weight:800;letter-spacing:.13em;text-transform:uppercase}h1{font-size:1.8rem;line-height:1.15;margin:8px 0}header p{color:#d6e3f1;margin:8px 0 0;font-size:.95rem}
-.tabs{display:flex;gap:8px;padding:12px 14px;position:sticky;top:0;background:rgba(243,246,251,.96);backdrop-filter:blur(10px);z-index:5;border-bottom:1px solid var(--line)}
-.tab{flex:1;border:0;border-radius:12px;padding:12px 8px;background:#e6edf6;color:var(--navy);font-weight:800;font-size:.92rem}
-.tab.active{background:var(--navy);color:white}
-main{padding:16px 14px 42px}.panel{display:none}.panel.active{display:block}
-.card{background:var(--card);border:1px solid var(--line);border-radius:17px;padding:16px;margin:0 0 13px;box-shadow:0 4px 16px rgba(16,35,63,.035)}
-h2{font-size:1.22rem;margin:0 0 10px;color:var(--navy)}h3{font-size:1.02rem;margin:14px 0 7px;color:var(--navy)}
-p{margin:7px 0}.muted,.small{color:var(--muted)}.small{font-size:.86rem}
-.pill{display:inline-block;padding:3px 9px;border-radius:99px;background:#eaf7fc;color:#14617b;font-size:.74rem;font-weight:800;margin:2px 4px 2px 0}
-.formula{background:#f2f7fc;border:1px solid #e0eaf4;border-radius:12px;padding:12px;margin:9px 0;font-weight:750;color:#102d50;overflow-wrap:anywhere}
-.math{font-family:ui-monospace,SFMono-Regular,Consolas,monospace;font-size:.97rem}
-table{width:100%;border-collapse:collapse;font-size:.88rem;margin:9px 0}th,td{padding:9px 7px;text-align:left;border-bottom:1px solid var(--line)}th{color:var(--navy);background:#f5f8fc}
-.scroll{overflow-x:auto} .gantt{display:flex;overflow-x:auto;margin:12px 0 5px;border:1px solid var(--line);border-radius:10px;min-width:0}
-.seg{min-width:45px;flex:1;text-align:center;padding:10px 3px;font-size:.78rem;font-weight:800;background:#e7f4fb;border-right:1px solid white;color:#143454}
-.seg:nth-child(2n){background:#fff0e2}.times{display:flex;justify-content:space-between;color:var(--muted);font-size:.75rem}
-button,select,input{font:inherit}button.primary{background:var(--navy);color:white;border:0;border-radius:11px;padding:11px 15px;font-weight:800}
-button.secondary{background:#edf2f8;color:var(--navy);border:0;border-radius:10px;padding:10px 13px;font-weight:750}
-.grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:9px}
-.field label{display:block;font-size:.82rem;font-weight:750;margin-bottom:4px;color:var(--muted)}.field input,.field select{width:100%;padding:11px;border:1px solid #cfd9e6;border-radius:10px;background:white;color:var(--ink)}
-.result{background:#eff8f4;border:1px solid #d5eee2;padding:12px;border-radius:11px;margin-top:10px}
-.q{padding:13px 0;border-bottom:1px solid var(--line)}.q:last-child{border:0}.qtitle{font-weight:800;margin-bottom:8px}
-.option{display:flex;align-items:flex-start;gap:9px;padding:8px 10px;border:1px solid var(--line);border-radius:10px;margin:6px 0;background:white}
-.option input{margin-top:4px;accent-color:var(--navy)}.feedback{padding:9px 11px;border-radius:9px;margin-top:7px;font-size:.88rem}.correct{background:#e9f7f0;color:#126746}.wrong{background:#fff0f0;color:#9d3030}
-.note{border-left:4px solid var(--orange);background:#fff8f0;padding:10px 12px;border-radius:0 10px 10px 0;font-size:.9rem}
-footer{text-align:center;padding:10px 20px 30px;color:var(--muted);font-size:.8rem}
-@media(min-width:700px){main,.tabs{padding-left:22px;padding-right:22px}header{padding:32px 25px}h1{font-size:2.2rem}.card{padding:20px}.grid{grid-template-columns:repeat(4,minmax(0,1fr))}}
->>>>>>> a3e579681fa4c35a921eaea0913178e6e3b939f7
 </style>
 </head>
 <body>
 <header><div class="wrap">
 <div class="eyebrow">Operating Systems • Study Notes</div>
-<<<<<<< HEAD
 <h1>Operating Systems Study</h1>
 <p>Ringkasan teori, latihan soal, rumus penting, dan snippet code C berdasarkan materi OS.</p>
 </div></header>
@@ -169,111 +135,11 @@ footer{text-align:center;padding:10px 20px 30px;color:var(--muted);font-size:.8r
 <p>Producer memasukkan item ke buffer terbatas; consumer mengambilnya. Mutex melindungi buffer. Condition variable membuat producer menunggu saat buffer penuh (<code>not_full</code>) dan consumer menunggu saat kosong (<code>not_empty</code>).</p>
 <h3>Parallel array sum</h3>
 <p>Array dibagi menjadi beberapa bagian untuk worker thread. Tiap worker menghitung partial sum, lalu menambahkan hasil ke total bersama dengan perlindungan mutex.</p>
-=======
-<h1>CPU Scheduling</h1>
-<p>Rumus lengkap, cara membaca Gantt Chart, contoh dari latihan, dan kuis mandiri. Dibuat nyaman dibuka dari HP.</p>
-</div></header>
-<nav class="tabs" aria-label="Navigasi materi">
-<button class="tab active" data-tab="rumus">📘 Rumus & Materi</button>
-<button class="tab" data-tab="latihan">✍️ Latihan Soal</button>
-</nav>
-<main class="wrap">
-<section id="rumus" class="panel active">
-<div class="card">
-<h2>1. Data yang digunakan</h2>
-<p>Latihan pada file Excel menggunakan empat proses berikut. Nilai ini menjadi dasar contoh kelima algoritma di halaman ini.</p>
-<div class="scroll"><table><thead><tr><th>Process</th><th>Arrival Time (AT)</th><th>Burst Time (BT / Ts)</th></tr></thead><tbody>
-<tr><td>A</td><td>0</td><td>12</td></tr><tr><td>B</td><td>3</td><td>4</td></tr><tr><td>C</td><td>5</td><td>9</td></tr><tr><td>D</td><td>7</td><td>2</td></tr>
-</tbody></table></div>
-<p class="small">AT = waktu proses datang. BT/Ts = total waktu CPU yang dibutuhkan proses.</p>
-</div>
-<div class="card">
-<h2>2. Rumus dasar — wajib hafal</h2>
-<h3>Finish Time (FT)</h3><p>Waktu ketika suatu proses benar-benar selesai dieksekusi. Didapat dari Gantt Chart.</p>
-<div class="formula math">FT = waktu selesai proses pada Gantt Chart</div>
-<h3>Turnaround Time (Tr)</h3><p>Total waktu sejak proses datang sampai selesai.</p>
-<div class="formula math">Tr = FT − AT</div>
-<h3>Waiting Time (WT)</h3><p>Total waktu proses menunggu di ready queue. Untuk satu proses yang sudah selesai:</p>
-<div class="formula math">WT = Tr − BT = FT − AT − BT</div>
-<h3>Normalized Turnaround Time (Tr/Ts)</h3><p>Turnaround time dibandingkan dengan burst time. Di latihan Excel ditulis <b>Tr/Ts</b>.</p>
-<div class="formula math">Normalized Tr = Tr ÷ Ts (atau BT)</div>
-<h3>Response Ratio (HRRN)</h3>
-<div class="formula math">Response Ratio = (WT + BT) ÷ BT<br>= 1 + (WT ÷ BT)</div>
-<p class="small">WT pada HRRN adalah waktu tunggu proses sejak datang hingga saat keputusan penjadwalan dibuat.</p>
-<h3>Rata-rata (Mean)</h3>
-<div class="formula math">Mean Tr = Σ(Tr) ÷ jumlah proses<br>Mean Tr/Ts = Σ(Tr/Ts) ÷ jumlah proses<br>Mean WT = Σ(WT) ÷ jumlah proses</div>
-<div class="note">Catatan: Jangan tertukar antara Tr dan WT. Tr menghitung seluruh waktu di sistem (menunggu + berjalan), sedangkan WT hanya waktu menunggu.</div>
-</div>
-<div class="card">
-<h2>3. Rumus / aturan tiap algoritma</h2>
-<h3>FCFS — First Come First Served <span class="pill">Non-preemptive</span></h3>
-<p>Proses dengan AT paling awal dikerjakan lebih dahulu. Proses yang sedang berjalan tidak dipotong.</p>
-<div class="formula math">Urutan: berdasarkan AT terkecil<br>Waktu mulai = max(FT proses sebelumnya, AT proses)</div>
-<p class="small">Jika CPU kosong, proses menunggu sampai ada proses yang datang.</p>
-<h3>SRT — Shortest Remaining Time <span class="pill">Preemptive</span></h3>
-<p>Pilih proses yang memiliki sisa waktu eksekusi paling kecil. Proses baru dapat mengambil CPU jika remaining time-nya lebih kecil.</p>
-<div class="formula math">Remaining Time = BT − waktu yang sudah dieksekusi</div>
-<p class="small">Evaluasi kembali ketika proses baru datang atau proses yang berjalan selesai. Jika seri, ikuti aturan tie-break yang diberikan dosen/soal.</p>
-<h3>SPN — Shortest Process Next <span class="pill">Non-preemptive</span></h3>
-<p>Ketika CPU siap memilih proses baru, pilih BT paling kecil dari proses yang sudah tiba dan sedang menunggu. Setelah mulai, proses berjalan sampai selesai.</p>
-<div class="formula math">Pilih proses dengan BT minimum<br>di antara proses yang AT ≤ waktu sekarang</div>
-<h3>RR — Round Robin <span class="pill">Preemptive</span></h3>
-<p>Setiap proses mendapat jatah CPU sebesar time quantum (q). Pada latihan, q = 4.</p>
-<div class="formula math">Lama eksekusi satu giliran = min(q, remaining time)<br>Remaining baru = remaining lama − lama eksekusi</div>
-<p>Jika masih tersisa setelah quantum habis, proses masuk ke belakang ready queue. Jika selesai, proses keluar dari antrean.</p>
-<div class="formula math">Latihan ini: q = 4</div>
-<h3>HRRN — Highest Response Ratio Next <span class="pill">Non-preemptive</span></h3>
-<p>Pada setiap pemilihan proses, hitung response ratio semua proses yang sudah tiba. Pilih nilai paling tinggi.</p>
-<div class="formula math">RR = (WT + BT) ÷ BT</div>
-<p>Setelah proses terpilih selesai, hitung ulang WT dan RR untuk proses yang masih menunggu.</p>
-</div>
-<div class="card">
-<h2>4. Contoh Gantt Chart dari data latihan</h2>
-<p class="small">Diagram berikut menunjukkan urutan eksekusi dan waktu selesai yang tercatat di Excel latihan.</p>
-<h3>FCFS</h3><div class="gantt"><div class="seg">A</div><div class="seg">B</div><div class="seg">C</div><div class="seg">D</div></div><div class="times"><span>0</span><span>12</span><span>16</span><span>25</span><span>27</span></div>
-<h3>SRT</h3><div class="gantt"><div class="seg">A</div><div class="seg">B</div><div class="seg">D</div><div class="seg">A</div><div class="seg">C</div></div><div class="times"><span>0</span><span>3</span><span>7</span><span>9</span><span>18</span><span>27</span></div>
-<h3>SPN</h3><div class="gantt"><div class="seg">A</div><div class="seg">D</div><div class="seg">B</div><div class="seg">C</div></div><div class="times"><span>0</span><span>12</span><span>14</span><span>18</span><span>27</span></div>
-<h3>RR (q = 4)</h3><div class="gantt"><div class="seg">A</div><div class="seg">B</div><div class="seg">A</div><div class="seg">C</div><div class="seg">D</div><div class="seg">A</div><div class="seg">C</div></div><div class="times"><span>0</span><span>4</span><span>8</span><span>12</span><span>16</span><span>18</span><span>22</span><span>27</span></div>
-<h3>HRRN</h3><div class="gantt"><div class="seg">A</div><div class="seg">D</div><div class="seg">B</div><div class="seg">C</div></div><div class="times"><span>0</span><span>12</span><span>14</span><span>18</span><span>27</span></div>
-<p class="small">Panjang kotak pada sketsa ini bersifat ilustratif; angka waktu di bawah diagram adalah patokan waktu yang harus dibaca.</p>
-</div>
-<div class="card">
-<h2>5. Hasil yang tercantum di Excel latihan</h2>
-<div class="scroll"><table><thead><tr><th>Algoritma</th><th>Mean Tr</th><th>Mean Tr/Ts</th></tr></thead><tbody>
-<tr><td>FCFS</td><td>16.25</td><td>4.118</td></tr><tr><td>SRT</td><td>11.50</td><td>1.486</td></tr><tr><td>SPN</td><td>14.00</td><td>2.674</td></tr><tr><td>RR (q4)</td><td>15.00</td><td>2.757</td></tr><tr><td>HRRN</td><td>14.00</td><td>2.674</td></tr>
-</tbody></table></div>
-<p>Menurut angka di file Excel, SRT memiliki Mean Tr dan Mean Tr/Ts paling rendah pada latihan ini.</p>
-</div>
-<div class="card">
-<h2>6. Kalkulator rumus cepat</h2>
-<p class="small">Masukkan angka satu proses untuk menghitung Tr, WT, dan Tr/Ts.</p>
-<div class="grid">
-<div class="field"><label>Arrival Time (AT)</label><input id="at" type="number" value="3" min="0"></div>
-<div class="field"><label>Burst Time (BT)</label><input id="bt" type="number" value="4" min="0.01" step="any"></div>
-<div class="field"><label>Finish Time (FT)</label><input id="ft" type="number" value="16" min="0"></div>
-</div>
-<button class="primary" style="margin-top:12px" onclick="calculate()">Hitung</button>
-<div id="calcresult" class="result" aria-live="polite">Tr = 13 • WT = 9 • Tr/Ts = 3.25</div>
-<h3>Kalkulator Response Ratio HRRN</h3>
-<div class="grid">
-<div class="field"><label>Waiting Time (WT)</label><input id="hwt" type="number" value="9" min="0"></div>
-<div class="field"><label>Burst Time (BT)</label><input id="hbt" type="number" value="4" min="0.01" step="any"></div>
-</div>
-<button class="secondary" style="margin-top:10px" onclick="hrrn()">Hitung Response Ratio</button>
-<div id="hresult" class="result" aria-live="polite">Response Ratio = 3.25</div>
-</div>
-<div class="card">
-<h2>7. Ringkasan cepat untuk dihafal</h2>
-<div class="scroll"><table><thead><tr><th>Algoritma</th><th>Memilih berdasarkan</th><th>Preemptive?</th></tr></thead><tbody>
-<tr><td>FCFS</td><td>AT terkecil / datang duluan</td><td>Tidak</td></tr><tr><td>SRT</td><td>Remaining time terkecil</td><td>Ya</td></tr><tr><td>SPN</td><td>BT terkecil di ready queue</td><td>Tidak</td></tr><tr><td>RR</td><td>Giliran sesuai quantum</td><td>Ya</td></tr><tr><td>HRRN</td><td>Response ratio terbesar</td><td>Tidak</td></tr>
-</tbody></table></div>
->>>>>>> a3e579681fa4c35a921eaea0913178e6e3b939f7
 </div>
 </section>
 
 <section id="latihan" class="panel">
 <div class="card">
-<<<<<<< HEAD
 <h2>Latihan pilihan ganda</h2>
 <p class="small">Materi mencakup konsep Q1–Q2 dan topik scheduling pada Q8–Q10. Pilih jawaban lalu tekan Periksa jawaban.</p>
 <div id="quiz"></div>
@@ -544,46 +410,12 @@ int main(void) {
 </section>
 </main>
 <footer style="text-align:center;padding:10px 20px 30px;color:#66758b;font-size:.8rem">OS Study • Theory • Practice • Formula • C Snippets</footer>
-=======
-<h2>Latihan soal CPU Scheduling</h2>
-<p>Kerjakan tanpa melihat catatan terlebih dahulu. Tekan <b>Periksa jawaban</b> untuk melihat skor dan pembahasannya.</p>
-<div id="quiz"></div>
-<button class="primary" onclick="gradeQuiz()">Periksa jawaban</button>
-<button class="secondary" onclick="resetQuiz()" style="margin-left:6px">Ulangi</button>
-<div id="score" aria-live="polite"></div>
-</div>
-<div class="card">
-<h2>Latihan hitung mandiri</h2>
-<p><b>Soal:</b> Sebuah proses memiliki AT = 6, BT = 5, dan FT = 18.</p>
-<p>a. Hitung Turnaround Time (Tr).</p><p>b. Hitung Waiting Time (WT).</p><p>c. Hitung Normalized Turnaround Time (Tr/Ts).</p>
-<details><summary><b>Lihat pembahasan</b></summary>
-<p>Tr = FT − AT = 18 − 6 = <b>12</b>.</p>
-<p>WT = Tr − BT = 12 − 5 = <b>7</b>.</p>
-<p>Tr/Ts = 12 ÷ 5 = <b>2.4</b>.</p>
-</details>
-</div>
-<div class="card">
-<h2>Latihan HRRN</h2>
-<p>Pada waktu sekarang = 10, ada dua proses yang menunggu:</p>
-<div class="scroll"><table><tr><th>Proses</th><th>AT</th><th>BT</th></tr><tr><td>P</td><td>2</td><td>4</td></tr><tr><td>Q</td><td>6</td><td>2</td></tr></table></div>
-<p>Hitung WT masing-masing dari waktu sekarang, lalu tentukan proses yang dipilih.</p>
-<details><summary><b>Lihat pembahasan</b></summary>
-<p>P: WT = 10 − 2 = 8. RR = (8 + 4) ÷ 4 = <b>3</b>.</p>
-<p>Q: WT = 10 − 6 = 4. RR = (4 + 2) ÷ 2 = <b>3</b>.</p>
-<p>Nilainya seri (3 dan 3). Perlu aturan tie-break dari soal/dosen untuk menentukan urutan.</p>
-</details>
-</div>
-</section>
-</main>
-<footer>OS Study • CPU Scheduling • Materi latihan FCFS, SRT, SPN, RR q4, HRRN</footer>
->>>>>>> a3e579681fa4c35a921eaea0913178e6e3b939f7
 <script>
 document.querySelectorAll('.tab').forEach(b=>b.addEventListener('click',()=>{
  document.querySelectorAll('.tab').forEach(x=>x.classList.toggle('active',x===b));
  document.querySelectorAll('.panel').forEach(x=>x.classList.toggle('active',x.id===b.dataset.tab));
  window.scrollTo({top:0,behavior:'smooth'});
 }));
-<<<<<<< HEAD
 const questions=[
 {q:'1. Di antara aplikasi dan hardware, posisi Operating System adalah …',o:['Di bawah hardware','Di antara aplikasi dan hardware','Di dalam CPU sebagai aplikasi','Tidak berhubungan dengan hardware'],a:1,e:'OS menjadi perantara aplikasi dan hardware sekaligus resource manager.'},
 {q:'2. Komponen yang menjalankan instruksi program adalah …',o:['RAM','System Bus','CPU','I/O Device'],a:2,e:'CPU/processor menjalankan instruksi.'},
@@ -606,44 +438,12 @@ questions.forEach((q,i)=>{
  const d=document.createElement('div');d.className='q';
  const title=document.createElement('div');title.className='qtitle';title.textContent=q.q;d.appendChild(title);
  q.o.forEach((o,j)=>{const lab=document.createElement('label');lab.className='option';const inp=document.createElement('input');inp.type='radio';inp.name='q'+i;inp.value=j;const span=document.createElement('span');span.textContent=o;lab.append(inp,span);d.appendChild(lab);});
-=======
-function fmt(n){return Number.isInteger(n)?String(n):n.toFixed(3).replace(/0+$/,'').replace(/\.$/,'')}
-function calculate(){
- const at=Number(document.getElementById('at').value),bt=Number(document.getElementById('bt').value),ft=Number(document.getElementById('ft').value);
- const out=document.getElementById('calcresult');
- if(![at,bt,ft].every(Number.isFinite)||bt<=0||ft<at){out.textContent='Periksa input: BT harus lebih dari 0 dan FT tidak boleh lebih kecil dari AT.';return}
- const tr=ft-at,wt=tr-bt,nt=tr/bt;
- out.innerHTML='Turnaround Time (Tr) = <b>'+fmt(tr)+'</b><br>Waiting Time (WT) = <b>'+fmt(wt)+'</b><br>Normalized Tr (Tr/Ts) = <b>'+fmt(nt)+'</b>';
-}
-function hrrn(){
- const wt=Number(document.getElementById('hwt').value),bt=Number(document.getElementById('hbt').value),out=document.getElementById('hresult');
- if(!Number.isFinite(wt)||!Number.isFinite(bt)||wt<0||bt<=0){out.textContent='WT harus ≥ 0 dan BT harus lebih dari 0.';return}
- out.innerHTML='Response Ratio = <b>'+fmt((wt+bt)/bt)+'</b>';
-}
-const questions=[
- {q:'1. Algoritma yang memilih proses berdasarkan waktu kedatangan paling awal adalah …',o:['SRT','FCFS','HRRN','RR'],a:1,e:'FCFS melayani proses berdasarkan urutan kedatangan (AT).'},
- {q:'2. Algoritma mana yang dapat menghentikan sementara proses yang sedang berjalan ketika proses baru datang?',o:['FCFS','SPN','SRT','HRRN'],a:2,e:'SRT bersifat preemptive dan membandingkan remaining time.'},
- {q:'3. Dalam SPN, proses yang dipilih adalah proses dengan …',o:['AT terbesar','Remaining time terbesar','BT terkecil dari proses yang sudah tiba','Response ratio terbesar'],a:2,e:'SPN memilih BT terkecil di antara proses yang sudah tersedia dan tidak memotong proses.'},
- {q:'4. Time quantum pada latihan Round Robin adalah …',o:['2','3','4','5'],a:2,e:'Latihan Excel menuliskan RR q4, artinya quantum = 4.'},
- {q:'5. Rumus Turnaround Time yang benar adalah …',o:['FT − AT','FT − BT','AT − BT','WT ÷ BT'],a:0,e:'Tr = Finish Time − Arrival Time.'},
- {q:'6. Jika Tr = 15 dan BT = 5, berapa WT?',o:['5','10','15','20'],a:1,e:'WT = Tr − BT = 15 − 5 = 10.'},
- {q:'7. Rumus HRRN adalah …',o:['BT ÷ WT','WT − BT','(WT + BT) ÷ BT','AT + BT'],a:2,e:'Response Ratio = (Waiting Time + Burst Time) ÷ Burst Time.'},
- {q:'8. HRRN memilih proses dengan nilai …',o:['Response ratio terbesar','Response ratio terkecil','BT terbesar','AT terbesar'],a:0,e:'Highest Response Ratio Next memilih response ratio paling tinggi.'},
- {q:'9. Algoritma yang memberikan giliran CPU berdasarkan jatah waktu (quantum) adalah …',o:['FCFS','SPN','HRRN','RR'],a:3,e:'Round Robin membagi giliran CPU dengan time quantum.'},
- {q:'10. Jika FT = 20, AT = 4, BT = 6, maka WT adalah …',o:['10','12','14','16'],a:1,e:'Tr = 20 − 4 = 16. WT = 16 − 6 = 10. Jadi jawaban yang benar adalah 10.',fix:true}
-];
-const quiz=document.getElementById('quiz');
-questions.forEach((q,i)=>{
- const d=document.createElement('div');d.className='q';d.innerHTML='<div class="qtitle">'+q.q+'</div>';
- q.o.forEach((o,j)=>{const lab=document.createElement('label');lab.className='option';lab.innerHTML='<input type="radio" name="q'+i+'" value="'+j+'"><span>'+o+'</span>';d.appendChild(lab)});
->>>>>>> a3e579681fa4c35a921eaea0913178e6e3b939f7
  const f=document.createElement('div');f.id='f'+i;d.appendChild(f);quiz.appendChild(d);
 });
 function gradeQuiz(){
  let score=0;
  questions.forEach((q,i)=>{
   const selected=document.querySelector('input[name="q'+i+'"]:checked');
-<<<<<<< HEAD
   const ok=selected&&Number(selected.value)===q.a;if(ok)score++;
   const f=document.getElementById('f'+i);f.className='feedback '+(ok?'correct':'wrong');
   f.textContent=(ok?'Benar. ':'Belum tepat. Jawaban: '+q.o[q.a]+'. ')+q.e;
@@ -666,16 +466,3 @@ function copyCode(id){
 </script>
 </body>
 </html>
-=======
-  const correct=q.fix?0:q.a; // question 10: option index 0 is 10
-  const ok=selected&&Number(selected.value)===correct;
-  if(ok)score++;
-  const f=document.getElementById('f'+i);f.className='feedback '+(ok?'correct':'wrong');
-  f.textContent=(ok?'Benar. ':'Belum tepat. Jawaban: '+q.o[correct]+'. ')+q.e;
- });
- document.getElementById('score').innerHTML='<div class="result"><b>Skor kamu: '+score+'/'+questions.length+'</b></div>';
-}
-function resetQuiz(){document.querySelectorAll('#quiz input').forEach(x=>x.checked=false);document.querySelectorAll('#quiz .feedback').forEach(x=>{x.textContent='';x.className=''});document.getElementById('score').textContent='';}
-</script>
-</body></html>
->>>>>>> a3e579681fa4c35a921eaea0913178e6e3b939f7
