@@ -1,0 +1,468 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#10233f">
+<title>OS Study — Operating Systems</title>
+<style>
+:root{--navy:#10233f;--navy2:#18385f;--cyan:#4cc9f0;--orange:#f4a261;--bg:#f3f6fb;--card:#fff;--ink:#17243a;--muted:#66758b;--line:#e4eaf2;--green:#16845b;--red:#c74646}
+*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:var(--bg);color:var(--ink);font-family:system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;line-height:1.55}
+header{background:linear-gradient(135deg,var(--navy),var(--navy2));color:#fff;padding:25px 18px 22px;border-radius:0 0 25px 25px}
+.wrap{max-width:900px;margin:auto}header .eyebrow{color:#a8dff0;font-size:.76rem;font-weight:800;letter-spacing:.13em;text-transform:uppercase}h1{font-size:1.8rem;line-height:1.15;margin:8px 0}header p{color:#d6e3f1;margin:8px 0 0;font-size:.95rem}
+.tabs{display:flex;gap:7px;padding:12px 10px;position:sticky;top:0;background:rgba(243,246,251,.96);backdrop-filter:blur(10px);z-index:5;border-bottom:1px solid var(--line)}
+.tab{flex:1;min-width:0;border:0;border-radius:12px;padding:11px 5px;background:#e6edf6;color:var(--navy);font-weight:800;font-size:.82rem}
+.tab.active{background:var(--navy);color:white}
+main{padding:16px 14px 42px}.panel{display:none}.panel.active{display:block}
+.card{background:var(--card);border:1px solid var(--line);border-radius:17px;padding:16px;margin:0 0 13px;box-shadow:0 4px 16px rgba(16,35,63,.035)}
+h2{font-size:1.22rem;margin:0 0 10px;color:var(--navy)}h3{font-size:1.02rem;margin:14px 0 7px;color:var(--navy)}h4{margin:12px 0 5px;color:var(--navy)}
+p{margin:7px 0}.muted,.small{color:var(--muted)}.small{font-size:.86rem}
+.pill{display:inline-block;padding:3px 9px;border-radius:99px;background:#eaf7fc;color:#14617b;font-size:.74rem;font-weight:800;margin:2px 4px 2px 0}
+.formula{background:#f2f7fc;border:1px solid #e0eaf4;border-radius:12px;padding:12px;margin:9px 0;font-weight:750;color:#102d50;overflow-wrap:anywhere}
+.math,pre,code{font-family:ui-monospace,SFMono-Regular,Consolas,monospace}pre{white-space:pre;overflow-x:auto;background:#101e32;color:#e4efff;padding:14px;border-radius:12px;font-size:.82rem;line-height:1.55;margin:8px 0}
+table{width:100%;border-collapse:collapse;font-size:.88rem;margin:9px 0}th,td{padding:9px 7px;text-align:left;border-bottom:1px solid var(--line)}th{color:var(--navy);background:#f5f8fc}.scroll{overflow-x:auto}
+button,select,input{font:inherit}button.primary{background:var(--navy);color:white;border:0;border-radius:11px;padding:11px 15px;font-weight:800}
+button.secondary{background:#edf2f8;color:var(--navy);border:0;border-radius:10px;padding:10px 13px;font-weight:750}
+.copy{float:right;border:0;border-radius:8px;padding:6px 9px;background:#eaf0f8;color:var(--navy);font-size:.78rem;font-weight:800}
+.note{border-left:4px solid var(--orange);background:#fff8f0;padding:10px 12px;border-radius:0 10px 10px 0;font-size:.9rem;margin:10px 0}
+.q{padding:13px 0;border-bottom:1px solid var(--line)}.q:last-child{border:0}.qtitle{font-weight:800;margin-bottom:8px}
+.option{display:flex;align-items:flex-start;gap:9px;padding:8px 10px;border:1px solid var(--line);border-radius:10px;margin:6px 0;background:white}
+.option input{margin-top:4px;accent-color:var(--navy)}.feedback{padding:9px 11px;border-radius:9px;margin-top:7px;font-size:.88rem}.correct{background:#e9f7f0;color:#126746}.wrong{background:#fff0f0;color:#9d3030}
+details{background:#f8fafc;border:1px solid var(--line);border-radius:11px;padding:10px 12px;margin:9px 0}summary{cursor:pointer;color:var(--navy)}
+.gantt{display:flex;overflow-x:auto;margin:12px 0 5px;border:1px solid var(--line);border-radius:10px}.seg{min-width:42px;flex:1;text-align:center;padding:9px 3px;font-size:.78rem;font-weight:800;background:#e7f4fb;border-right:1px solid white;color:#143454}.seg:nth-child(2n){background:#fff0e2}
+.times{display:flex;justify-content:space-between;color:var(--muted);font-size:.75rem}
+@media(min-width:700px){main,.tabs{padding-left:22px;padding-right:22px}header{padding:32px 25px}h1{font-size:2.2rem}.card{padding:20px}.tab{font-size:.92rem;padding:12px 8px}}
+</style>
+</head>
+<body>
+<header><div class="wrap">
+<div class="eyebrow">Operating Systems • Study Notes</div>
+<h1>Operating Systems Study</h1>
+<p>Ringkasan teori, latihan soal, rumus penting, dan snippet code C berdasarkan materi OS.</p>
+</div></header>
+<nav class="tabs" aria-label="Navigasi materi">
+<button class="tab active" data-tab="teori">📚 Teori</button>
+<button class="tab" data-tab="latihan">✍️ Latihan Soal</button>
+<button class="tab" data-tab="rumus">📐 Rumus</button>
+<button class="tab" data-tab="code">💻 Snippet Code</button>
+</nav>
+<main class="wrap">
+<section id="teori" class="panel active">
+<div class="card">
+<h2>1. Computer Hardware & Operating System</h2>
+<h3>Komponen dasar komputer</h3>
+<div class="scroll"><table><tr><th>Komponen</th><th>Fungsi</th></tr>
+<tr><td>CPU / Processor</td><td>Menjalankan instruksi program.</td></tr><tr><td>Main Memory (RAM)</td><td>Menyimpan data dan instruksi yang sedang digunakan.</td></tr><tr><td>I/O Modules / Devices</td><td>Menghubungkan komputer dengan perangkat input dan output.</td></tr><tr><td>System Bus</td><td>Jalur komunikasi antara CPU, memory, dan I/O.</td></tr></table></div>
+<p>Operating System berada di antara aplikasi dan hardware. OS bertindak sebagai <b>resource manager</b>, bukan aplikasi biasa.</p>
+<div class="formula math">Application → Operating System → Hardware</div>
+<h3>Bagaimana OS mengelola memory?</h3>
+<ul><li>Mengalokasikan memory kepada process.</li><li>Membebaskan memory saat tidak dibutuhkan.</li><li>Melindungi area kernel.</li><li>Mengisolasi memory antar-process agar tidak saling mengganggu.</li></ul>
+<p class="small">Tambahan konsep: memory hierarchy mencakup cache, main memory (RAM), dan secondary storage. Cache lebih dekat dan umumnya lebih cepat diakses CPU daripada RAM.</p>
+</div>
+<div class="card">
+<h2>2. Instruction Cycle & Interrupt</h2>
+<h3>Instruction cycle</h3>
+<ol><li><b>Fetch:</b> CPU mengambil instruksi dari memory menggunakan alamat pada Program Counter (PC).</li><li><b>Decode:</b> CPU menerjemahkan instruksi untuk mengetahui operasi yang harus dilakukan.</li><li><b>Execute:</b> CPU menjalankan instruksi.</li><li><b>Interrupt check:</b> CPU memeriksa apakah ada interrupt yang perlu ditangani, lalu siklus berulang.</li></ol>
+<h3>Interrupt</h3>
+<p>Interrupt adalah sinyal yang memberi tahu CPU bahwa ada kejadian yang membutuhkan perhatian. Interrupt memungkinkan OS mengambil kembali kontrol CPU.</p>
+<div class="formula">Contoh: program berjalan → keyboard menerima input → keyboard mengirim interrupt → CPU menyimpan kondisi program → OS menangani input → program dilanjutkan.</div>
+<h3>Beberapa interrupt sekaligus</h3>
+<ul><li><b>Priority:</b> interrupt berprioritas tinggi ditangani lebih dahulu.</li><li><b>Masking:</b> interrupt tertentu dapat dinonaktifkan sementara saat CPU menangani tugas yang lebih penting.</li></ul>
+<p>Jika perangkat I/O mengirim interrupt, CPU menyimpan context program yang sedang berjalan. OS menangani event I/O, kemudian program sebelumnya dapat dilanjutkan.</p>
+</div>
+<div class="card">
+<h2>3. OS sebagai Extended Machine & System Call</h2>
+<p>OS disebut <b>extended machine</b> karena menyembunyikan detail hardware yang rumit dan menyediakan abstraksi/interface yang lebih mudah digunakan.</p>
+<h3>Contoh abstraksi</h3>
+<ul><li><b>File:</b> program cukup membuka, membaca, atau menulis file tanpa mengatur detail fisik disk secara langsung.</li><li><b>Process:</b> program tidak perlu mengatur CPU sendiri; OS menyediakan konsep process dan mengatur pergantian eksekusi.</li></ul>
+<p><b>System call</b> adalah mekanisme program meminta layanan dari OS. Program umumnya berjalan dalam <b>user mode</b>; saat system call dilakukan, CPU berpindah ke <b>kernel mode</b> untuk menjalankan layanan OS.</p>
+<div class="formula math">Application (user mode) → System Call → Kernel mode → OS service → Return</div>
+<h3>Resource yang dikelola OS</h3>
+<p>CPU, main memory, I/O devices, files/storage, processes, dan network resources.</p>
+<h3>Batch system vs Time-sharing</h3>
+<div class="scroll"><table><tr><th>Batch system</th><th>Time-sharing</th></tr><tr><td>Job dikumpulkan dan dijalankan tanpa interaksi langsung user selama eksekusi.</td><td>Banyak user/program berbagi CPU secara bergantian.</td></tr><tr><td>Fokus pada pemrosesan kumpulan job.</td><td>Memberi kesan sistem interaktif dan responsif.</td></tr></table></div>
+</div>
+<div class="card">
+<h2>4. Process, PCB, dan Process States</h2>
+<p><b>Process</b> adalah program yang sedang dieksekusi beserta kondisi dan resource yang dibutuhkan.</p>
+<h3>State utama process</h3>
+<div class="scroll"><table><tr><th>Perpindahan</th><th>Alasan</th></tr><tr><td>Ready → Running</td><td>Scheduler memberikan CPU.</td></tr><tr><td>Running → Ready</td><td>Time slice habis atau process di-preempt.</td></tr><tr><td>Running → Blocked</td><td>Process menunggu I/O/event.</td></tr><tr><td>Blocked → Ready</td><td>I/O atau event selesai.</td></tr></table></div>
+<h3>Process Control Block (PCB)</h3>
+<p>Struktur data OS yang menyimpan PID, process state, program counter, CPU registers, informasi scheduling, informasi memory, dan status I/O. PCB membantu OS menghentikan sementara dan melanjutkan process.</p>
+<h3>Creation, hierarchy, dan termination</h3>
+<p>Process dapat dibuat saat komputer dinyalakan, program dijalankan, atau process lain membuatnya. Parent process membuat child process; hubungan ini membentuk process tree. Saat process selesai, OS melakukan cleanup: membebaskan memory, menutup file, dan melepaskan resource.</p>
+<h3>Multiprogramming, suspend, dan swap</h3>
+<p><b>Multiprogramming</b> menempatkan beberapa program di memory agar CPU dapat menjalankan process lain saat sebuah process menunggu I/O. <b>Swap out</b> memindahkan process dari RAM ke storage; <b>swap in</b> memasukkannya kembali. Suspend berarti process ditangguhkan sementara.</p>
+</div>
+<div class="card">
+<h2>5. Process vs Thread</h2>
+<p><b>Thread</b> adalah unit eksekusi di dalam process. Satu process dapat memiliki beberapa thread.</p>
+<div class="scroll"><table><tr><th>Shared dalam process</th><th>Private tiap thread</th></tr><tr><td>Address space, data, dan resource seperti file terbuka.</td><td>Stack, registers, dan program counter.</td></tr></table></div>
+<h3>Keuntungan thread</h3>
+<ul><li><b>Responsiveness:</b> aplikasi tetap responsif saat thread lain bekerja.</li><li><b>Resource sharing:</b> thread dalam process yang sama mudah berbagi data.</li><li><b>Economy:</b> pembuatan dan context switch thread umumnya lebih ringan daripada process.</li><li><b>Parallelism:</b> thread dapat berjalan di beberapa core jika didukung sistem.</li></ul>
+<div class="note">Shared memory perlu sinkronisasi. Tanpa pengaturan yang benar, dua thread dapat menimbulkan race condition.</div>
+<h3>Model implementasi thread</h3>
+<div class="scroll"><table><tr><th>Model</th><th>Pengelola</th><th>Kelebihan / kelemahan</th></tr>
+<tr><td>ULT (User-Level Thread)</td><td>Library/runtime di user space.</td><td>Cepat dibuat dan diganti; pada many-to-one, blocking system call satu thread dapat memblokir seluruh process dan kernel tidak menjadwalkan thread secara individual ke banyak core.</td></tr>
+<tr><td>KLT (Kernel-Level Thread)</td><td>Kernel OS.</td><td>Kernel menjadwalkan tiap thread; thread lain dapat berjalan saat satu thread blocked. Overhead lebih tinggi karena melibatkan kernel.</td></tr>
+<tr><td>Hybrid</td><td>Library/runtime dan kernel.</td><td>Menggabungkan efisiensi ULT dan kemampuan KLT, tetapi lebih kompleks.</td></tr></table></div>
+</div>
+<div class="card">
+<h2>6. Multiprocessor & Distributed Systems</h2>
+<h3>Shared-memory multiprocessor</h3>
+<p>Dua atau lebih processor berbagi memory utama. Setiap processor dapat memiliki cache sendiri.</p>
+<ul><li><b>UMA:</b> waktu akses memory relatif sama bagi semua processor.</li><li><b>NUMA:</b> waktu akses berbeda tergantung lokasi memory.</li><li><b>Cache coherence:</b> menjaga agar salinan data pada cache processor tetap konsisten.</li></ul>
+<h3>Organisasi OS multiprocessor</h3>
+<ul><li><b>Separate OS:</b> tiap processor memiliki OS/supervisor sendiri.</li><li><b>Master-slave:</b> satu processor mengatur OS, processor lain menjalankan tugas.</li><li><b>SMP (Symmetric Multiprocessing):</b> processor memiliki kedudukan setara.</li></ul>
+<h3>Sinkronisasi & penjadwalan CPU</h3>
+<ul><li><b>Spinlock:</b> processor menunggu (busy-wait) sampai lock tersedia.</li><li><b>Test-and-set:</b> operasi atomik untuk memeriksa sekaligus mengubah lock.</li><li><b>Barrier:</b> membuat processor/thread menunggu sampai semua peserta mencapai titik sinkronisasi.</li><li><b>Time sharing:</b> processor dibagi berdasarkan waktu.</li><li><b>Space sharing:</b> processor dialokasikan untuk pekerjaan tertentu.</li><li><b>Gang scheduling:</b> thread terkait dijalankan bersama-sama.</li><li><b>Processor affinity:</b> mempertahankan process pada processor yang sama untuk mengurangi biaya migrasi/cache miss.</li></ul>
+<h3>Multicore & real-time</h3>
+<p><b>Load balancing</b> membagi beban antar-core. <b>Migration</b> memindahkan process/thread, tetapi dapat menimbulkan biaya karena cache perlu diisi kembali.</p>
+<div class="scroll"><table><tr><th>Hard real-time</th><th>Soft real-time</th></tr><tr><td>Deadline harus dipenuhi; keterlambatan tidak dapat diterima.</td><td>Keterlambatan sesekali masih dapat ditoleransi.</td></tr></table></div>
+<ul><li><b>RMS:</b> prioritas tetap berdasarkan periode task; periode lebih pendek mendapat prioritas lebih tinggi.</li><li><b>EDF:</b> task dengan deadline paling dekat mendapat prioritas tertinggi.</li></ul>
+<h3>Multicomputer & middleware</h3>
+<p>Multicomputer terdiri dari node yang masing-masing memiliki processor dan memory sendiri serta terhubung melalui jaringan.</p>
+<ul><li><b>Message passing:</b> node bertukar pesan.</li><li><b>RPC:</b> memanggil prosedur pada komputer lain.</li><li><b>DSM:</b> abstraksi seolah-olah memory digunakan bersama.</li></ul>
+<p><b>Middleware</b> adalah perangkat lunak perantara komunikasi aplikasi terdistribusi. Contoh: RPC middleware dan Message-Oriented Middleware (MOM).</p>
+</div>
+<div class="card">
+<h2>7. Konsep pendukung soal coding</h2>
+<h3>Process creation dengan fork()</h3>
+<p><code>fork()</code> membuat child process. Nilai baliknya: negatif jika gagal, 0 pada child, dan PID child pada parent. Parent dapat memakai <code>wait()</code>/<code>waitpid()</code> agar menunggu child selesai.</p>
+<h3>Thread dan mutex</h3>
+<p><code>pthread_create()</code> membuat thread, <code>pthread_join()</code> menunggu thread selesai. Mutex melindungi critical section agar hanya satu thread mengakses data bersama pada satu waktu.</p>
+<h3>Producer–consumer / bounded buffer</h3>
+<p>Producer memasukkan item ke buffer terbatas; consumer mengambilnya. Mutex melindungi buffer. Condition variable membuat producer menunggu saat buffer penuh (<code>not_full</code>) dan consumer menunggu saat kosong (<code>not_empty</code>).</p>
+<h3>Parallel array sum</h3>
+<p>Array dibagi menjadi beberapa bagian untuk worker thread. Tiap worker menghitung partial sum, lalu menambahkan hasil ke total bersama dengan perlindungan mutex.</p>
+</div>
+</section>
+
+<section id="latihan" class="panel">
+<div class="card">
+<h2>Latihan pilihan ganda</h2>
+<p class="small">Materi mencakup konsep Q1–Q2 dan topik scheduling pada Q8–Q10. Pilih jawaban lalu tekan Periksa jawaban.</p>
+<div id="quiz"></div>
+<button class="primary" onclick="gradeQuiz()">Periksa jawaban</button>
+<button class="secondary" onclick="resetQuiz()">Ulangi</button>
+<div id="score"></div>
+</div>
+<div class="card">
+<h2>Soal hitungan — Q8: FCFS & Round Robin</h2>
+<p>Empat job tiba bersamaan pada t=0 dengan running time A=7, B=5, C=3, D=9 menit.</p>
+<p><b>(a)</b> FCFS urutan A, B, C, D. <b>(b)</b> Round Robin quantum=3, urutan awal A, B, C, D. Tentukan urutan selesai, completion time, dan average turnaround time.</p>
+<details><summary><b>Lihat pembahasan Q8</b></summary>
+<h4>FCFS</h4><p>Gantt: A 0–7, B 7–12, C 12–15, D 15–24.</p><p>Completion: A=7, B=12, C=15, D=24. Karena semua AT=0, TAT sama dengan completion time.</p><p>Average TAT = (7+12+15+24)/4 = <b>14.5 menit</b>.</p>
+<h4>Round Robin q=3</h4><p>Gantt: A(0–3), B(3–6), C(6–9 selesai), D(9–12), A(12–15), B(15–17 selesai), D(17–20), A(20–21 selesai), D(21–24 selesai).</p><p>Completion order: <b>C → B → A → D</b>. Completion: C=9, B=17, A=21, D=24.</p><p>Average TAT = (21+17+9+24)/4 = <b>17.75 menit</b>.</p></details>
+</div>
+<div class="card">
+<h2>Soal hitungan — Q9: SPN & SRT</h2>
+<p><b>(a)</b> Semua tiba t=0: A=5, B=4, C=7, D=6, E=8. Gunakan nonpreemptive SPN.</p>
+<p><b>(b)</b> A tiba t=1 (BT=4), B t=2 (BT=9), C t=5 (BT=7), D t=6 (BT=8), E t=7 (BT=2). Gunakan preemptive SRT.</p>
+<details><summary><b>Lihat pembahasan Q9</b></summary>
+<h4>(a) SPN</h4><p>Urutan BT terkecil: B(4) → A(5) → D(6) → C(7) → E(8).</p><p>Gantt: B 0–4, A 4–9, D 9–15, C 15–22, E 22–30.</p><p>Completion: B=4, A=9, D=15, C=22, E=30. Average TAT = (4+9+15+22+30)/5 = <b>16 menit</b>.</p>
+<h4>(b) SRT</h4><p>Timeline: CPU idle 0–1; A 1–5; C 5–7; E 7–9; C 9–14; D 14–22; B 22–31.</p><p>Completion order: <b>A → E → C → D → B</b>. Completion: A=5, E=9, C=14, D=22, B=31.</p><p>TAT: A=5−1=4; B=31−2=29; C=14−5=9; D=22−6=16; E=9−7=2.</p><p>Average TAT = (4+29+9+16+2)/5 = <b>12 menit</b>.</p></details>
+</div>
+<div class="card">
+<h2>Soal hitungan — Q10: Multilevel Queue</h2>
+<p>Lima job tiba t=0: A=4, B=3, C=7, D=6, E=8. Queue: Q0 (prioritas tertinggi) RR q=2 berisi D; Q1 RR q=4 berisi B,C,E; Q2 FCFS berisi A. Queue prioritas tinggi selalu didahulukan.</p>
+<details><summary><b>Lihat pembahasan Q10</b></summary>
+<p>Q0: D memakai quantum berulang sampai selesai, 0–2, 2–4, 4–6.</p><p>Q1: B 6–9 selesai; C 9–13 (sisa 3); E 13–17 (sisa 4); C 17–20 selesai; E 20–24 selesai.</p><p>Q2: A 24–28 selesai.</p><p>Completion order: <b>D → B → C → E → A</b>.</p><p>Completion/TAT (semua AT=0): D=6, B=9, C=20, E=24, A=28.</p><p>Average TAT = (6+9+20+24+28)/5 = <b>17.4 menit</b>.</p></details>
+</div>
+<div class="card">
+<h2>Latihan hitungan tambahan</h2>
+<p>Sebuah process memiliki AT=6, BT=5, dan FT=18. Hitung Tr, WT, dan normalized turnaround time.</p>
+<details><summary><b>Lihat jawaban</b></summary><p>Tr=FT−AT=18−6=<b>12</b>.</p><p>WT=Tr−BT=12−5=<b>7</b>.</p><p>Normalized TAT=Tr/BT=12/5=<b>2.4</b>.</p></details>
+</div>
+</section>
+
+<section id="rumus" class="panel">
+<div class="card">
+<h2>Rumus dasar CPU Scheduling</h2>
+<h3>Completion / Finish Time</h3><div class="formula math">FT = waktu ketika process selesai pada Gantt Chart</div>
+<h3>Turnaround Time</h3><div class="formula math">TAT (Tr) = FT − AT</div><p>Total waktu sejak process datang sampai selesai.</p>
+<h3>Waiting Time</h3><div class="formula math">WT = TAT − BT = FT − AT − BT</div><p>Total waktu process menunggu di ready queue.</p>
+<h3>Normalized Turnaround Time</h3><div class="formula math">Normalized TAT = TAT ÷ BT</div>
+<h3>Average / Mean</h3><div class="formula math">Average TAT = ΣTAT ÷ jumlah process<br>Average WT = ΣWT ÷ jumlah process<br>Average Normalized TAT = Σ(TAT/BT) ÷ jumlah process</div>
+</div>
+<div class="card">
+<h2>Rumus dan aturan algoritma</h2>
+<h3>FCFS <span class="pill">Non-preemptive</span></h3><div class="formula math">Start = max(FT sebelumnya, AT)<br>Urutan berdasarkan AT paling awal</div>
+<h3>SPN / SJF <span class="pill">Non-preemptive</span></h3><div class="formula math">Pilih BT terkecil dari process yang sudah tiba</div>
+<h3>SRT <span class="pill">Preemptive</span></h3><div class="formula math">Remaining Time = BT − waktu yang telah dieksekusi<br>Pilih remaining time paling kecil</div>
+<h3>Round Robin <span class="pill">Preemptive</span></h3><div class="formula math">Eksekusi per giliran = min(q, remaining time)<br>Remaining baru = remaining lama − eksekusi</div><p>Jika masih ada sisa setelah quantum habis, process masuk ke belakang ready queue.</p>
+<h3>HRRN <span class="pill">Non-preemptive</span></h3><div class="formula math">Response Ratio = (WT + BT) ÷ BT<br>= 1 + (WT ÷ BT)</div><p>Pilih response ratio terbesar. WT dihitung dari waktu process tiba sampai keputusan scheduling dibuat.</p>
+<h3>Rata-rata scheduling</h3><div class="formula math">Mean = total nilai seluruh process ÷ jumlah process</div>
+</div>
+<div class="card">
+<h2>Ringkasan cepat algoritma</h2>
+<div class="scroll"><table><tr><th>Algoritma</th><th>Dasar pemilihan</th><th>Preemptive</th></tr><tr><td>FCFS</td><td>Datang paling awal</td><td>Tidak</td></tr><tr><td>SPN</td><td>BT terkecil yang sudah tiba</td><td>Tidak</td></tr><tr><td>SRT</td><td>Remaining time terkecil</td><td>Ya</td></tr><tr><td>RR</td><td>Giliran berdasarkan quantum</td><td>Ya</td></tr><tr><td>HRRN</td><td>Response ratio terbesar</td><td>Tidak</td></tr></table></div>
+<div class="note">Tips: buat Gantt Chart terlebih dahulu. Dari Gantt Chart, cari FT setiap process, lalu hitung TAT dan WT. Jangan menyamakan TAT dengan WT.</div>
+</div>
+<div class="card">
+<h2>Kalkulator TAT, WT, dan Normalized TAT</h2>
+<div class="scroll"><table><tr><td>Arrival Time (AT)</td><td><input id="at" type="number" value="3" min="0"></td></tr><tr><td>Burst Time (BT)</td><td><input id="bt" type="number" value="4" min="0.01" step="any"></td></tr><tr><td>Finish Time (FT)</td><td><input id="ft" type="number" value="16" min="0"></td></tr></table></div>
+<button class="primary" onclick="calculate()">Hitung</button><div id="calcresult" class="formula">TAT = 13 • WT = 9 • Normalized TAT = 3.25</div>
+</div>
+</section>
+
+<section id="code" class="panel">
+<div class="card">
+<h2>1. fork() — Parent & Child Process</h2>
+<p>Child mencetak PID dan angka 1 sampai N. Parent menunggu child selesai dengan <code>wait()</code>.</p>
+<button class="copy" onclick="copyCode('code1')">Copy code</button>
+<pre id="code1">#include &lt;stdio.h&gt;
+#include &lt;stdlib.h&gt;
+#include &lt;unistd.h&gt;
+#include &lt;sys/wait.h&gt;
+
+int main(void) {
+    int n;
+    printf("NIM NAMA LENGKAP\n");
+    fflush(stdout);
+
+    if (scanf("%d", &amp;n) != 1) return 1;
+
+    pid_t pid = fork();
+    if (pid &lt; 0) {
+        perror("fork");
+        return 1;
+    }
+
+    if (pid == 0) {
+        printf("child %d\n", getpid());
+        for (int i = 1; i &lt;= n; i++) printf("%d\n", i);
+        fflush(stdout);
+        exit(0);
+    } else {
+        int status;
+        pid_t childpid = wait(&amp;status);
+        printf("parent self %d child %d\n", getpid(), childpid);
+        printf("DONE\n");
+    }
+    return 0;
+}</pre>
+<p class="small">Ganti NIM NAMA LENGKAP dengan identitas roster sendiri. <code>fflush(stdout)</code> memastikan baris pertama tercetak sebelum fork.</p>
+</div>
+<div class="card">
+<h2>2. pthread + Mutex — Shared Sum</h2>
+<p>Worker mengambil mutex, menambah sequence, mencetak TID, dan menambahkan nilai ke shared sum.</p>
+<button class="copy" onclick="copyCode('code2')">Copy code</button>
+<pre id="code2">#include &lt;stdio.h&gt;
+#include &lt;stdlib.h&gt;
+#include &lt;pthread.h&gt;
+
+long sum = 0, seq = 0;
+pthread_mutex_t lock = PTHREAD_MUTEX_INITIALIZER;
+
+void *worker(void *arg) {
+    int i = *(int *)arg;
+    pthread_mutex_lock(&amp;lock);
+
+    seq++;
+    printf("lock %ld\n", seq);
+    printf("tid %lu\n", (unsigned long)pthread_self());
+    sum += (i + 1);
+
+    pthread_mutex_unlock(&amp;lock);
+    return NULL;
+}
+
+int main(void) {
+    int n;
+    printf("NIM NAMA LENGKAP\n");
+    fflush(stdout);
+    if (scanf("%d", &amp;n) != 1 || n &lt; 0) return 1;
+
+    pthread_t *threads = malloc(n * sizeof(pthread_t));
+    int *ids = malloc(n * sizeof(int));
+    printf("main %lu\n", (unsigned long)pthread_self());
+
+    for (int i = 0; i &lt; n; i++) {
+        ids[i] = i;
+        pthread_create(&amp;threads[i], NULL, worker, &amp;ids[i]);
+    }
+    for (int i = 0; i &lt; n; i++) pthread_join(threads[i], NULL);
+
+    printf("sum %ld\n", sum);
+    free(threads); free(ids);
+    pthread_mutex_destroy(&amp;lock);
+    return 0;
+}</pre>
+<div class="note">Mutex membuat bagian update <code>seq</code> dan <code>sum</code> menjadi critical section yang aman dari race condition.</div>
+</div>
+<div class="card">
+<h2>3. Producer–Consumer — Bounded Buffer</h2>
+<p>Buffer kapasitas 8. Producer menunggu saat penuh; consumer menunggu saat kosong.</p>
+<button class="copy" onclick="copyCode('code3')">Copy code</button>
+<pre id="code3">#include &lt;stdio.h&gt;
+#include &lt;pthread.h&gt;
+#define CAP 8
+
+int buf[CAP], in=0, out=0, count=0, n;
+pthread_mutex_t m = PTHREAD_MUTEX_INITIALIZER;
+pthread_cond_t not_full = PTHREAD_COND_INITIALIZER;
+pthread_cond_t not_empty = PTHREAD_COND_INITIALIZER;
+
+void *producer(void *arg) {
+    printf("prod %lu\n", (unsigned long)pthread_self());
+    for (int i=1; i&lt;=n; i++) {
+        pthread_mutex_lock(&amp;m);
+        while (count == CAP) pthread_cond_wait(&amp;not_full, &amp;m);
+        buf[in] = i;
+        in = (in + 1) % CAP;
+        count++;
+        pthread_cond_signal(&amp;not_empty);
+        pthread_mutex_unlock(&amp;m);
+    }
+    return NULL;
+}
+
+void *consumer(void *arg) {
+    printf("cons %lu\n", (unsigned long)pthread_self());
+    for (int i=1; i&lt;=n; i++) {
+        pthread_mutex_lock(&amp;m);
+        while (count == 0) pthread_cond_wait(&amp;not_empty, &amp;m);
+        int value = buf[out];
+        out = (out + 1) % CAP;
+        count--;
+        pthread_cond_signal(&amp;not_full);
+        pthread_mutex_unlock(&amp;m);
+        printf("%d\n", value);
+    }
+    return NULL;
+}
+
+int main(void) {
+    printf("NIM NAMA LENGKAP\n");
+    fflush(stdout);
+    if (scanf("%d", &amp;n) != 1 || n &lt; 0) return 1;
+    pthread_t prod, cons;
+    pthread_create(&amp;prod, NULL, producer, NULL);
+    pthread_create(&amp;cons, NULL, consumer, NULL);
+    pthread_join(prod, NULL);
+    pthread_join(cons, NULL);
+    return 0;
+}</pre>
+<p class="small">Pola penting: lock mutex → cek kondisi dengan while → tunggu/signal condition variable → unlock mutex.</p>
+</div>
+<div class="card">
+<h2>4. Parallel Array Sum — Multiple Workers</h2>
+<p>Array dibagi menjadi potongan kontigu yang relatif merata. Setiap worker menghitung partial sum, lalu menggabungkannya dengan mutex.</p>
+<button class="copy" onclick="copyCode('code4')">Copy code</button>
+<pre id="code4">#include &lt;stdio.h&gt;
+#include &lt;stdlib.h&gt;
+#include &lt;pthread.h&gt;
+#include &lt;unistd.h&gt;
+
+int *arr, m, n;
+long total = 0;
+pthread_mutex_t lock = PTHREAD_MUTEX_INITIALIZER;
+
+typedef struct { int id; } ThreadArg;
+
+void *worker(void *arg) {
+    int i = ((ThreadArg *)arg)-&gt;id;
+    int start = i * m / n;
+    int end = (i + 1) * m / n;
+    long partial = 0;
+
+    for (int j=start; j&lt;end; j++) partial += arr[j];
+    printf("worker %lu part %ld\n",
+           (unsigned long)pthread_self(), partial);
+
+    pthread_mutex_lock(&amp;lock);
+    total += partial;
+    pthread_mutex_unlock(&amp;lock);
+    return NULL;
+}
+
+int main(void) {
+    printf("NIM NAMA LENGKAP\n");
+    fflush(stdout);
+    if (scanf("%d %d", &amp;n, &amp;m) != 2 || n &lt;= 0 || m &lt; 0) return 1;
+
+    printf("cpus %ld\n", sysconf(_SC_NPROCESSORS_ONLN));
+    printf("main %lu\n", (unsigned long)pthread_self());
+
+    arr = malloc((size_t)m * sizeof(int));
+    for (int i=0; i&lt;m; i++) scanf("%d", &amp;arr[i]);
+
+    pthread_t *threads = malloc(n * sizeof(pthread_t));
+    ThreadArg *args = malloc(n * sizeof(ThreadArg));
+    for (int i=0; i&lt;n; i++) {
+        args[i].id = i;
+        pthread_create(&amp;threads[i], NULL, worker, &amp;args[i]);
+    }
+    for (int i=0; i&lt;n; i++) pthread_join(threads[i], NULL);
+
+    printf("total %ld\n", total);
+    free(arr); free(threads); free(args);
+    pthread_mutex_destroy(&amp;lock);
+    return 0;
+}</pre>
+</div>
+<div class="card">
+<h2>Fungsi yang wajib dikenali</h2>
+<div class="scroll"><table><tr><th>Function</th><th>Kegunaan</th></tr>
+<tr><td><code>fork()</code></td><td>Membuat child process.</td></tr><tr><td><code>getpid()</code></td><td>Mengambil process ID.</td></tr><tr><td><code>wait()</code></td><td>Parent menunggu child selesai.</td></tr><tr><td><code>pthread_create()</code></td><td>Membuat thread.</td></tr><tr><td><code>pthread_join()</code></td><td>Menunggu thread selesai.</td></tr><tr><td><code>pthread_mutex_lock/unlock()</code></td><td>Masuk/keluar critical section.</td></tr><tr><td><code>pthread_cond_wait()</code></td><td>Menunggu kondisi; melepas mutex sementara dan mengambilnya kembali sebelum lanjut.</td></tr><tr><td><code>pthread_cond_signal()</code></td><td>Membangunkan satu thread yang menunggu condition variable.</td></tr><tr><td><code>sysconf(_SC_NPROCESSORS_ONLN)</code></td><td>Mengambil jumlah processor online.</td></tr></table></div>
+</div>
+</section>
+</main>
+<footer style="text-align:center;padding:10px 20px 30px;color:#66758b;font-size:.8rem">OS Study • Theory • Practice • Formula • C Snippets</footer>
+<script>
+document.querySelectorAll('.tab').forEach(b=>b.addEventListener('click',()=>{
+ document.querySelectorAll('.tab').forEach(x=>x.classList.toggle('active',x===b));
+ document.querySelectorAll('.panel').forEach(x=>x.classList.toggle('active',x.id===b.dataset.tab));
+ window.scrollTo({top:0,behavior:'smooth'});
+}));
+const questions=[
+{q:'1. Di antara aplikasi dan hardware, posisi Operating System adalah …',o:['Di bawah hardware','Di antara aplikasi dan hardware','Di dalam CPU sebagai aplikasi','Tidak berhubungan dengan hardware'],a:1,e:'OS menjadi perantara aplikasi dan hardware sekaligus resource manager.'},
+{q:'2. Komponen yang menjalankan instruksi program adalah …',o:['RAM','System Bus','CPU','I/O Device'],a:2,e:'CPU/processor menjalankan instruksi.'},
+{q:'3. Urutan instruction cycle yang benar adalah …',o:['Decode–Fetch–Execute','Fetch–Decode–Execute','Execute–Fetch–Decode','Fetch–Execute–Decode'],a:1,e:'CPU mengambil instruksi, menerjemahkan, lalu menjalankannya.'},
+{q:'4. Apa fungsi interrupt?',o:['Menghapus process','Memberi sinyal kejadian yang perlu ditangani CPU/OS','Menambah kapasitas RAM','Mengganti system bus'],a:1,e:'Interrupt memungkinkan OS memperoleh kembali kontrol CPU untuk menangani event.'},
+{q:'5. PCB menyimpan informasi berikut, kecuali …',o:['PID dan process state','Program counter dan registers','Informasi scheduling','Warna casing komputer'],a:3,e:'PCB menyimpan konteks dan informasi pengelolaan process.'},
+{q:'6. Kelemahan ULT model many-to-one adalah …',o:['Tidak bisa berbagi data','Satu blocking system call dapat memblokir seluruh process','Selalu membutuhkan kernel untuk membuat thread','Tidak memiliki stack'],a:1,e:'Kernel tidak mengelola thread individual pada model ULT many-to-one.'},
+{q:'7. Dalam FCFS, process dipilih berdasarkan …',o:['Burst time terbesar','Response ratio tertinggi','Waktu kedatangan paling awal','Remaining time terkecil'],a:2,e:'FCFS menjalankan process berdasarkan urutan kedatangan.'},
+{q:'8. Algoritma preemptive yang memilih remaining time terkecil adalah …',o:['SPN','SRT','FCFS','HRRN'],a:1,e:'SRT dapat menghentikan process yang berjalan ketika process dengan remaining time lebih kecil datang.'},
+{q:'9. Pada Round Robin, jika process belum selesai saat quantum habis maka …',o:['Dihapus','Tetap memegang CPU tanpa batas','Dimasukkan ke belakang ready queue','Kembali ke awal program'],a:2,e:'Process yang masih memiliki sisa burst time masuk ke belakang antrean.'},
+{q:'10. Semua job tiba t=0. Dengan FCFS A=7, B=5, C=3, D=9 dalam urutan A,B,C,D, completion time D adalah …',o:['15','21','24','27'],a:2,e:'A selesai 7, B 12, C 15, dan D 24.'},
+{q:'11. Pada Q9(a), urutan SPN untuk A=5, B=4, C=7, D=6, E=8 adalah …',o:['A,B,C,D,E','B,A,D,C,E','E,C,D,A,B','B,D,A,C,E'],a:1,e:'SPN nonpreemptive memilih burst time terkecil: B, A, D, C, E.'},
+{q:'12. Pada Q9(b), SRT memilih process berdasarkan …',o:['Arrival time terbesar','Burst time awal terbesar','Remaining time terkecil','PID terbesar'],a:2,e:'SRT mengevaluasi sisa waktu eksekusi dan dapat melakukan preemption.'},
+{q:'13. Pada Q10, queue dengan prioritas paling tinggi adalah …',o:['Q0','Q1','Q2','Semua sama'],a:0,e:'Q0 adalah queue prioritas tertinggi.'},
+{q:'14. Average turnaround time Q10 adalah …',o:['14.5','16','17.4','17.75'],a:2,e:'(6+9+20+24+28)/5 = 17.4 menit.'},
+{q:'15. Operasi yang digunakan parent untuk menunggu child process adalah …',o:['pthread_join()','wait()','fork()','exec()'],a:1,e:'wait()/waitpid() membuat parent menunggu child selesai.'}
+];
+const quiz=document.getElementById('quiz');
+questions.forEach((q,i)=>{
+ const d=document.createElement('div');d.className='q';
+ const title=document.createElement('div');title.className='qtitle';title.textContent=q.q;d.appendChild(title);
+ q.o.forEach((o,j)=>{const lab=document.createElement('label');lab.className='option';const inp=document.createElement('input');inp.type='radio';inp.name='q'+i;inp.value=j;const span=document.createElement('span');span.textContent=o;lab.append(inp,span);d.appendChild(lab);});
+ const f=document.createElement('div');f.id='f'+i;d.appendChild(f);quiz.appendChild(d);
+});
+function gradeQuiz(){
+ let score=0;
+ questions.forEach((q,i)=>{
+  const selected=document.querySelector('input[name="q'+i+'"]:checked');
+  const ok=selected&&Number(selected.value)===q.a;if(ok)score++;
+  const f=document.getElementById('f'+i);f.className='feedback '+(ok?'correct':'wrong');
+  f.textContent=(ok?'Benar. ':'Belum tepat. Jawaban: '+q.o[q.a]+'. ')+q.e;
+ });
+ document.getElementById('score').innerHTML='<div class="formula"><b>Skor kamu: '+score+'/'+questions.length+'</b></div>';
+}
+function resetQuiz(){document.querySelectorAll('#quiz input').forEach(x=>x.checked=false);document.querySelectorAll('#quiz .feedback').forEach(x=>{x.textContent='';x.className=''});document.getElementById('score').textContent='';}
+function calculate(){
+ const at=Number(document.getElementById('at').value),bt=Number(document.getElementById('bt').value),ft=Number(document.getElementById('ft').value);
+ const out=document.getElementById('calcresult');
+ if(![at,bt,ft].every(Number.isFinite)||bt<=0||at<0||ft<at){out.textContent='Periksa input: BT harus > 0, AT ≥ 0, dan FT ≥ AT.';return;}
+ const tr=ft-at,wt=tr-bt;
+ out.innerHTML='Turnaround Time (TAT) = <b>'+tr.toFixed(3).replace(/\.?0+$/,'')+'</b><br>Waiting Time (WT) = <b>'+wt.toFixed(3).replace(/\.?0+$/,'')+'</b><br>Normalized TAT = <b>'+(tr/bt).toFixed(3).replace(/\.?0+$/,'')+'</b>';
+}
+function copyCode(id){
+ const text=document.getElementById(id).innerText;
+ if(navigator.clipboard){navigator.clipboard.writeText(text).then(()=>alert('Code berhasil disalin.')).catch(()=>alert('Tidak dapat menyalin otomatis.'));}
+ else{alert('Clipboard tidak didukung browser ini.');}
+}
+</script>
+</body>
+</html>
